@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+}
+group 'com.wengnermiro.robo4j.net'
+version '1.0-SNAPSHOT'
+
+apply from: 'libraries.gradle'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
+        }
+    }
+}
+
+dependencies {
+    compile "com.robo4j:robo4j-core:${robo4jVersion}"
+    compile "com.robo4j:robo4j-socket-http:${robo4jVersion}"
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': rootProject.name,
+                'Implementation-Version': version,
+                'Main-Class': 'com.wengnermiro.robo4j.net.AppMain'
+    }
+    baseName = rootProject.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+wrapper {
+    gradleVersion = "${roboGradleVersion}"
+}
