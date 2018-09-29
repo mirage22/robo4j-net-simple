@@ -1,5 +1,6 @@
 package com.wengnermiro.robo4j.net;
 
+import com.robo4j.RoboApplication;
 import com.robo4j.RoboBuilder;
 import com.robo4j.RoboBuilderException;
 import com.robo4j.RoboContext;
@@ -21,11 +22,8 @@ public class AppMain {
         builder.add(contextIS);
 
         final RoboContext system = builder.build();
-        system.start();
-        System.out.println(SystemUtil.printStateReport(system));
-        System.out.println("Press any key...");
-        System.in.read();
-        system.shutdown();
+        final RoboApplication roboApp = new RoboApplication();
+        roboApp.launch(system);
     }
 
 }
