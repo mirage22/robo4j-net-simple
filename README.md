@@ -8,7 +8,7 @@ two different approaches of **configuring** the Robo4J system:
 2. **Programmatic**  (ProgrammaticMain.java)
 
 ##### Reguirements:
-1. Robo4J+alpha-0.4.1-SNAPSHOT available in your local maven repository
+1. Robo4J+alpha-0.4.3-SNAPSHOT available in your local maven repository
 2. Java 11+ 
 3. Gradle 4.8+
 
