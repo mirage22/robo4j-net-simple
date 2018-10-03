@@ -46,7 +46,7 @@ task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': rootProject.name,
                 'Implementation-Version': version,
-                'Main-Class': 'com.wengnermiro.robo4j.net.AppMain'
+                'Main-Class': 'com.wengnermiro.robo4j.net.ProgrammaticMain'
     }
     baseName = rootProject.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
