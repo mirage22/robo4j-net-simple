@@ -2,7 +2,10 @@
 This is a simple Robo4J example running on Java 11. The example
 does contain only one HTTP server unit. The unit provides information
 about the Robo4J system state. To access this information
-it is necessary to process simple HTTP GET request. 
+it is necessary to process simple HTTP GET request. The Example also shows 
+two different approaches of **configuring** the Robo4J system: 
+1. **Declarative**   (DeclarativeMain.java)
+2. **Programmatic**  (ProgrammaticMain.java)
 
 ##### Reguirements:
 1. Robo4J+alpha-0.4.1-SNAPSHOT available in your local maven repository
@@ -36,12 +39,15 @@ Press any key...
 
 Now you are ready to process the simple HTTP GET request
 ```bash
-curl http://localhost:8042
+curl http://localhost:8042  //Declarative
+curl http://localhost:8042  //Programmatic
+
 ```
 
 You should receive the following response
-```bash
-[{"id":"httpServer","state":"STARTED"}]
+```
+[{"id":"robonetSystem1","state":"STARTED"},{"id":"http_server","state":"STARTED"}]  //Declarative
+[{"id":"robonetSystem2","state":"STARTED"},{"id":"http_server","state":"STARTED"}]  //Programmatic
 ```
 
 #### Important note:
